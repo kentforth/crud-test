@@ -1,0 +1,40 @@
+.home {
+
+  h1 {
+    text-align: center;
+  }
+
+  hr {
+    width: 80%;
+    height: 2px;
+  }
+
+  &__add {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--green);
+    padding: 16px;
+    border-radius: var(--border-radius-button);
+    font-weight: 600;
+    font-size: 20px;
+
+    img {
+      width: 30px;
+      margin-left: 10px;
+    }
+  }
+
+  &__posts {
+    width: 80%;
+    margin: 20px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__post {
+    margin-bottom: 16px;
+  }
+}

@@ -1,0 +1,28 @@
+.post {
+  width: 100%;
+  padding: 16px;
+  background: var(--white);
+  border-radius: 6px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__edit {
+
+    img {
+      width: 30px;
+      filter: brightness(0) saturate(100%) invert(73%) sepia(61%) saturate(4672%) hue-rotate(90deg) brightness(104%) contrast(108%);
+    }
+  }
+
+  &__delete {
+    margin-left: 10px;
+    img {
+      width: 33px;
+      filter: brightness(0) saturate(100%) invert(31%) sepia(93%) saturate(3624%) hue-rotate(358deg) brightness(94%) contrast(93%);
+    }
+  }
+}
