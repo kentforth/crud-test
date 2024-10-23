@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "composite": true,
-    "module": "es2022",
-    "moduleResolution": "classic",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "baseUrl": ".",
     "noImplicitAny": false,
     "allowJs": true,
