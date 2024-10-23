@@ -28,6 +28,12 @@
     }
   }
 
+  &__loader {
+    margin: 0 auto;
+    display: block;
+    width: 50px;
+  }
+
   &__posts {
     position: relative;
     width: 80%;
@@ -69,6 +75,10 @@
   @media(max-width: 400px) {
     h1 {
       font-size: 20px;
+    }
+
+    &__loader {
+      width: 30px;
     }
   }
 }

@@ -5,12 +5,13 @@ export default {
 </script>
 
 <script setup lang="ts">
+import loader from '@/assets/icons/loader.svg'
 import addIcon from '@/assets/icons/add.svg'
-import Post from "@/components/Post/Post.vue";
 import { usePostsStore } from "@/stores/posts";
 import { computed } from "vue";
-import Modal from "@/components/Modal/Modal.vue";
 import { IPost } from "@/types/posts";
+import Post from "@/components/Post/Post.vue";
+import Modal from "@/components/Modal/Modal.vue";
 import UiButton from "@/components/UiButton/UiButton.vue";
 
 const postsStore = usePostsStore()
@@ -103,6 +104,8 @@ const savePost = () => {
     />
 
     <hr>
+
+    <img :src="loader" alt="" class="home__loader" v-if="!posts.length">
 
     <div class="home__posts">
       <transition mode="out-in">
