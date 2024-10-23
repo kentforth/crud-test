@@ -13,12 +13,20 @@
 
   // colors
   --white: #fff;
-  --green: #09d425;
+  --green100: #00BD68;
+  --green90: #00D775;
   --black: #000;
   --purple: #6d6ded;
   --grey: #9c9595;
+  --grey-brown: #8f6d6d;
   --dark-grey: #777373;
+  --dark-grey100: #3D433A;
   --error: #f12a2a;
+  --icon-color: brightness(0) saturate(100%) invert(24%) sepia(0%) saturate(5127%) hue-rotate(355deg) brightness(95%) contrast(94%);
+}
+
+.button-41:hover {
+  background: #00bd68;
 }
 
 html {
@@ -32,7 +40,7 @@ body {
   margin: 0;
   padding: 0;
   background: #F6F6F6;
-  font-family: 'Roboto', Helvetica, sans-serif;
+  font-family: 'Poppins', Helvetica, sans-serif;
 }
 
 a {

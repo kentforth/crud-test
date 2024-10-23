@@ -6,6 +6,7 @@ export default {
 
 <script setup lang="ts">
 import { computed } from "vue";
+import UiButton from "@/components/UiButton/UiButton.vue";
 
 const title = defineModel('title')
 const description = defineModel('description')
@@ -52,7 +53,7 @@ watch(description, () => {
     <div class="modal__background" />
 
     <div class="modal__content">
-      <form class="modal__form">
+      <form class="modal__form" @submit.prevent="$emit('save')">
         <div>
           <input
             v-model.trim="title"
@@ -84,19 +85,19 @@ watch(description, () => {
 
 
         <div class="modal__buttons">
-          <button
+          <UiButton
+            text="Отмена"
+            color="var(--dark-grey100)"
             class="modal__cancel"
-            @click.prevent="$emit('cancel')"
-          >
-            Отмена
-          </button>
-          <button
+            @click="$emit('cancel')"
+          />
+          <UiButton
+            text="Сохранить"
+            color="var(--dark-grey100)"
+            type="submit"
             class="modal__submit"
             :disabled="!isValid"
-            @click.prevent="$emit('save')"
-          >
-            Сохранить
-          </button>
+          />
         </div>
       </form>
     </div>

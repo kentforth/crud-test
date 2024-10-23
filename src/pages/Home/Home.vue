@@ -11,6 +11,7 @@ import { usePostsStore } from "@/stores/posts";
 import { computed } from "vue";
 import Modal from "@/components/Modal/Modal.vue";
 import { IPost } from "@/types/posts";
+import UiButton from "@/components/UiButton/UiButton.vue";
 
 const postsStore = usePostsStore()
 
@@ -91,10 +92,15 @@ const savePost = () => {
   <div class="home">
     <h1>Список постов</h1>
 
-    <button class="home__add" @click="addPost">
-      <span>Добавить пост</span>
-      <img :src="addIcon" alt="add">
-    </button>
+    <UiButton
+      alt="add"
+      color="var(--dark-grey100)"
+      text="Добавить пост"
+      :icon="addIcon"
+      :has-icon="true"
+      class="home__add"
+      @click="addPost"
+    />
 
     <hr>
 

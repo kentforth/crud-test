@@ -27,7 +27,7 @@ defineProps({
     <div class="post__header">
       <h2>{{ title }}</h2>
 
-      <div>
+      <div class="post__buttons">
         <button class="post__edit" @click="$emit('edit')">
           <img :src="editIcon" alt="edit">
         </button>
@@ -35,11 +35,11 @@ defineProps({
           <img :src="deleteIcon" alt="delete">
         </button>
       </div>
-
-
     </div>
+
     <p>{{ content }}</p>
   </div>
 </template>
 
 <style lang="scss" src="./Post.scss"/>
+<style lang="scss" src="./Post.mobile.scss"/>

@@ -8,18 +8,24 @@
   &__header {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__buttons {
+    width: max-content;
+    display: flex;
   }
 
   &__edit {
-
     img {
       width: 30px;
-      filter: brightness(0) saturate(100%) invert(73%) sepia(61%) saturate(4672%) hue-rotate(90deg) brightness(104%) contrast(108%);
+      filter: brightness(0) saturate(100%) invert(48%) sepia(84%) saturate(1917%) hue-rotate(119deg) brightness(96%) contrast(100%);
     }
   }
 
   &__delete {
     margin-left: 10px;
+
     img {
       width: 33px;
       filter: brightness(0) saturate(100%) invert(31%) sepia(93%) saturate(3624%) hue-rotate(358deg) brightness(94%) contrast(93%);
