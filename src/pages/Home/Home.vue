@@ -51,8 +51,7 @@ const editPost = (id: number) => {
   isEdit.value = true
   document.documentElement.style.overflow = 'hidden'
 
-  currentPost.value = postsStore.getPost(id)
-  // postsStore.editPost(id)
+  currentPost.value = JSON.parse(JSON.stringify(postsStore.getPost(id)))
 }
 
 const deletePost = async (id: number) => {
@@ -60,12 +59,31 @@ const deletePost = async (id: number) => {
 }
 
 const addPost = () => {
-  console.log('ADD')
+  isEdit.value = false
+  hasModal.value = true
+  currentPost.value.title = null
+  currentPost.value.body = null
 }
 
 const hideModal = () => {
   hasModal.value = false
   document.documentElement.style.overflow = 'visible'
+}
+
+const savePost = () => {
+  hasModal.value = false
+  document.documentElement.style.overflow = 'visible'
+
+
+
+  if (isEdit.value) {
+    postsStore.editPost(currentPost.value, isEdit.value)
+
+    return
+  }
+
+  postsStore.addPost(currentPost.value)
+
 }
 </script>
 
@@ -81,20 +99,26 @@ const hideModal = () => {
     <hr>
 
     <div class="home__posts">
-      <Post
-        v-for="post in posts"
-        :title="post.title"
-        :content="post.body"
-        @edit="editPost(post.id)"
-        @delete="deletePost(post.id)"
-        class="home__post"
-      />
+      <transition mode="out-in">
+        <transition-group name="posts" tag="div" v-if="posts.length > 0">
+          <Post
+            v-for="post in posts"
+            :key="post.id"
+            :title="post.title"
+            :content="post.body"
+            @edit="editPost(post.id)"
+            @delete="deletePost(post.id)"
+            class="home__post"
+          />
+        </transition-group>
+      </transition>
     </div>
 
     <Modal
       v-if="hasModal"
       :is-edit="isEdit"
       @cancel="hideModal"
+      @save="savePost"
       v-model:title="currentPost.title"
       v-model:description="currentPost.body"
     />

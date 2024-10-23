@@ -1,5 +1,5 @@
 .modal {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -35,14 +35,36 @@
     grid-gap: 16px;
   }
 
+  &__form-error {
+    transition: 0.2s ease;
+    color: var(--error);
+    opacity: 0;
+    font-size: 14px;
+    margin: 0;
+
+    &_visible {
+      opacity: 1;
+    }
+  }
+
   &__input {
     width: 100%;
     font-size: 16px;
+
+    &_error {
+      border-color: var(--error);
+
+      &:active,
+      &:focus {
+        border-color: var(--error);
+      }
+    }
   }
 
   &__description {
     width: 100%;
     resize: none;
+    display: block;
   }
 
   &__buttons {
@@ -52,6 +74,7 @@
   &__cancel,
   &__submit {
     padding: 20px;
+    font-weight: 600;
   }
 
   &__cancel {

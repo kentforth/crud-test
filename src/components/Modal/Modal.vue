@@ -5,16 +5,45 @@ export default {
 </script>
 
 <script setup lang="ts">
+import { computed } from "vue";
+
 const title = defineModel('title')
 const description = defineModel('description')
 
-defineEmits(['cancel'])
+const hasTitleError = ref(false)
+const hasDescriptionError = ref(false)
+
+defineEmits(['cancel', 'save'])
 
 defineProps({
   isEdit: {
     type: Boolean,
     default: false
   }
+})
+
+const isValid = computed(() => {
+  return !(!title.value || !description.value)
+})
+
+watch(title, () => {
+  if(title.value === '') {
+    hasTitleError.value = true
+
+    return
+  }
+
+  hasTitleError.value = false
+})
+
+watch(description, () => {
+  if(description.value === '') {
+    hasDescriptionError.value = true
+
+    return
+  }
+
+  hasDescriptionError.value = false
 })
 </script>
 
@@ -24,12 +53,50 @@ defineProps({
 
     <div class="modal__content">
       <form class="modal__form">
-        <input type="text" class="modal__input" placeholder="Название" v-model.trim="title">
-        <textarea placeholder="Описание" class="modal__description" v-model="description" rows="5"/>
+        <div>
+          <input
+            v-model.trim="title"
+            type="text"
+            class="modal__input"
+            :class="hasTitleError ? 'modal__input_error' : ''" placeholder="Название"
+          >
+          <p
+            class="modal__form-error"
+            :class="hasTitleError ? 'modal__form-error_visible' : ''">
+            Введите название
+          </p>
+        </div>
+
+        <div>
+          <textarea
+            v-model="description"
+            rows="5"
+            placeholder="Описание"
+            class="modal__description"
+            :class="hasDescriptionError ? 'modal__input_error' : ''"
+          />
+          <p
+            class="modal__form-error"
+            :class="hasDescriptionError ? 'modal__form-error_visible' : ''">
+            Введите описание
+          </p>
+        </div>
+
+
         <div class="modal__buttons">
-          <button class="modal__cancel" @click.prevent="$emit('cancel')">Отмена
+          <button
+            class="modal__cancel"
+            @click.prevent="$emit('cancel')"
+          >
+            Отмена
           </button>
-          <button class="modal__submit">Сохранить</button>
+          <button
+            class="modal__submit"
+            :disabled="!isValid"
+            @click.prevent="$emit('save')"
+          >
+            Сохранить
+          </button>
         </div>
       </form>
     </div>
