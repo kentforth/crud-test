@@ -3,10 +3,12 @@ import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import { fileURLToPath, URL } from 'node:url'
 import tsconfigPaths from 'vite-tsconfig-paths'
+import checker from 'vite-plugin-checker';
 
 export default defineConfig({
   plugins: [
     vue(),
+    checker({ typescript: false }),
     tsconfigPaths(),
     AutoImport({
     imports: ["vue"],
