@@ -120,14 +120,16 @@ const savePost = () => {
       </transition>
     </div>
 
-    <Modal
-      v-if="hasModal"
-      :is-edit="isEdit"
-      @cancel="hideModal"
-      @save="savePost"
-      v-model:title="currentPost.title"
-      v-model:description="currentPost.body"
-    />
+    <transition>
+      <Modal
+        v-if="hasModal"
+        :is-edit="isEdit"
+        @cancel="hideModal"
+        @save="savePost"
+        v-model:title="currentPost.title"
+        v-model:description="currentPost.body"
+      />
+    </transition>
   </div>
 </template>
 

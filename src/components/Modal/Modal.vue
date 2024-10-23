@@ -53,22 +53,22 @@ watch(description, () => {
     <div class="modal__background" />
 
     <div class="modal__content">
-      <form class="modal__form" @submit.prevent="$emit('save')">
-        <div>
-          <input
-            v-model.trim="title"
-            type="text"
-            class="modal__input"
-            :class="hasTitleError ? 'modal__input_error' : ''" placeholder="Название"
-          >
-          <p
-            class="modal__form-error"
-            :class="hasTitleError ? 'modal__form-error_visible' : ''">
-            Введите название
-          </p>
-        </div>
+        <form class="modal__form" @submit.prevent="$emit('save')">
+          <div>
+            <input
+              v-model.trim="title"
+              type="text"
+              class="modal__input"
+              :class="hasTitleError ? 'modal__input_error' : ''" placeholder="Название"
+            >
+            <p
+              class="modal__form-error"
+              :class="hasTitleError ? 'modal__form-error_visible' : ''">
+              Введите название
+            </p>
+          </div>
 
-        <div>
+          <div>
           <textarea
             v-model="description"
             rows="5"
@@ -76,31 +76,31 @@ watch(description, () => {
             class="modal__description"
             :class="hasDescriptionError ? 'modal__input_error' : ''"
           />
-          <p
-            class="modal__form-error"
-            :class="hasDescriptionError ? 'modal__form-error_visible' : ''">
-            Введите описание
-          </p>
-        </div>
+            <p
+              class="modal__form-error"
+              :class="hasDescriptionError ? 'modal__form-error_visible' : ''">
+              Введите описание
+            </p>
+          </div>
 
 
-        <div class="modal__buttons">
-          <UiButton
-            text="Отмена"
-            color="var(--dark-grey100)"
-            class="modal__cancel"
-            @click="$emit('cancel')"
-          />
-          <UiButton
-            text="Сохранить"
-            color="var(--dark-grey100)"
-            type="submit"
-            class="modal__submit"
-            :disabled="!isValid"
-          />
-        </div>
-      </form>
-    </div>
+          <div class="modal__buttons">
+            <UiButton
+              text="Отмена"
+              color="var(--dark-grey100)"
+              class="modal__cancel"
+              @click="$emit('cancel')"
+            />
+            <UiButton
+              text="Сохранить"
+              color="var(--dark-grey100)"
+              type="submit"
+              class="modal__submit"
+              :disabled="!isValid"
+            />
+          </div>
+        </form>
+      </div>
   </div>
 </template>
 
