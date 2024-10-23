@@ -5,6 +5,7 @@
     "moduleResolution": "Node",
     "baseUrl": ".",
     "noImplicitAny": false,
+    "strict": false,
     "allowJs": true,
     "paths": {
       "@/*": ["./src/*"]
